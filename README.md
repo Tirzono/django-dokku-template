@@ -12,6 +12,7 @@ Install postgres and create a new database:
 ```bash
 $ sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
 $ sudo dokku postgres:create {{ project_name }}
+$ sudo dokku postgres:link {{ project_name }} {{ project_name }}
 ```
 
 Set your environment on the dokku server:

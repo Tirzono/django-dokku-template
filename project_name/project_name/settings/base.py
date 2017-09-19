@@ -81,9 +81,7 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        dj_database_url.parse(get_secret('DATABASE_URL'))
-    }
+    'default':  dj_database_url.parse(get_secret('DATABASE_URL'))
 }
 
 
