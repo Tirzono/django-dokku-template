@@ -2,7 +2,7 @@ import os
 
 
 def get_settings_module():
-    if os.path.is_file('settings_module'):
+    if os.path.isfile('settings_module'):
         with open('settings_module', 'r') as f:
             return f.read().strip()
 
