@@ -4,7 +4,7 @@ Django Dokku Template
 Using this template to create a new Django app is easy:
 
 ```bash
-$ django-admin.py startproject --template=https://github.com/Tirzono/django-dokku-template/archive/master.zip --name=Procfile --name=README.md --name=settings_module.example {{ project_name }}
+$ django-admin.py startproject --template=https://github.com/Tirzono/django-dokku-template/archive/master.zip --name=Procfile --name=README.md --name=settings_module.example --name=secrets.json.example {{ project_name }}
 ```
 
 Install postgres and create a new database:

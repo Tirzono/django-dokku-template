@@ -5,3 +5,4 @@ staticfiles
 .idea
 
 settings_module
+secrets.json

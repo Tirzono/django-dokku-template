@@ -3,9 +3,9 @@ from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
-
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ('127.0.0.1', )
 
 
 if DEBUG:
