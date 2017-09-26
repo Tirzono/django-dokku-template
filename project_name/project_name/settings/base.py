@@ -132,4 +132,4 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Celery
-CELERY_BROKER_URL = get_secret('CELERY_BROKER_URL')
+CELERY_BROKER_URL = get_secret('RABBITMQ_URL', get_secret('CELERY_BROKER_URL', 'amqp://guest:guest@localhost:5672//'))
