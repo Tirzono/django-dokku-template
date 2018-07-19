@@ -2,24 +2,20 @@ import functools
 import json
 import os
 
-import dj_database_url
-
-from utils.secret import get as get_secret
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-try:
-    with open(os.path.join(BASE_DIR, 'secrets.json')) as f:
-        secrets_from_file = json.loads(f.read())
-except OSError:
-    secrets_from_file = {}
-
-# Set the defaults to those detected in secrets.json
-get_secret = functools.partial(get_secret, fallback_dict=secrets_from_file)
+env = environ.Env(
+    # Set casting, default value
+    DEBUG=(bool, False)
+)
+# Reading .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,9 +77,8 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default':  dj_database_url.parse(get_secret('DATABASE_URL'))
+    'default': env.db()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -132,4 +127,4 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Celery
-CELERY_BROKER_URL = get_secret('RABBITMQ_URL', get_secret('CELERY_BROKER_URL', 'amqp://guest:guest@localhost:5672//'))
+CELERY_BROKER_URL = env('RABBITMQ_URL', default=env('CELERY_BROKER_URL', default='amqp://guest:guest@localhost:5672//'))
