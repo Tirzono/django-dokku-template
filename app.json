@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dokku": {
-      "predeploy": "python {{ project_name }}/manage.py migrate --noinput"
+      "predeploy": "python {{cookiecutter.project_slug}}/manage.py migrate --noinput"
     }
   }
 }

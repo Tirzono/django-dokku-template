@@ -6,7 +6,7 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
-from {{ project_name }}.settings import set_settings_module
+from {{cookiecutter.project_slug}}.settings import set_settings_module
 set_settings_module()
 
 from whitenoise.django import DjangoWhiteNoise

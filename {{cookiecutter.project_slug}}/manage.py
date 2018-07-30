@@ -2,7 +2,7 @@
 import sys
 
 if __name__ == "__main__":
-    from {{ project_name }}.settings import set_settings_module
+    from {{cookiecutter.project_slug}}.settings import set_settings_module
     set_settings_module()
 
     try:

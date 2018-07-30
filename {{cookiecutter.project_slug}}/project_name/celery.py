@@ -1,12 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
-from {{ project_name }}.settings import set_settings_module
+from {{cookiecutter.project_slug}}.settings import set_settings_module
 
 
 set_settings_module()
 
-app = Celery('{{ project_name }}')
+app = Celery('{{cookiecutter.project_slug}}')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

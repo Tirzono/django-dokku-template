@@ -1,0 +1,9 @@
+{
+  "project_name": "My Dokku Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
+  "description": "My newest Dokku project!",
+  "author_name": "Sebastiaan ten Pas",
+  "domain_name": "example.com",
+  "email": "{{ cookiecutter.author_name.lower()|replace(' ', '-') }}@example.com",
+  "version": "0.0.1"
+}
